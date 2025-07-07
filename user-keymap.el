@@ -1,4 +1,4 @@
-;;; user-keymap.el --- Configure user keysequence bindings from a custom variable
+;;; user-keymap.el --- Configure user keysequence bindings from a custom variable -*- lexical-binding:t -*-
 ;; Author: Viandant <viandant@langenst.de>
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "29.3"))
