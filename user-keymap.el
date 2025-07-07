@@ -1,5 +1,5 @@
 ;;; user-keymap.el --- Configure user keysequence bindings from a custom variable
-;; Author: Viandant viandant@langenst.de>
+;; Author: Viandant <viandant@langenst.de>
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "29.3"))
 ;; Keywords: internal keymap keyboard customization
