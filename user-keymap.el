@@ -94,13 +94,14 @@ and the customisation dialogue will look nice again."
   :group 'user-keymap-mode)
 
 (defun user-keymap-mode-turn-on ()
-  "Turn on user-keymap-mode."
+  "Turn on `user-keymap-mode'."
   (user-keymap-mode 1)
   nil)
 
 ;;;###autoload
-(define-globalized-minor-mode global-user-keymap-mode user-keymap-mode user-keymap-mode-turn-on
-			      (message "global-user-keymap-mode switched."))
+(define-globalized-minor-mode global-user-keymap-mode user-keymap-mode  user-keymap-mode-turn-on
+    :group 'user-keymap-mode
+    (message "global-user-keymap-mode switched."))
 
 ;;;###autoload
 (defun user-keymap-sort-on-commands ()
