@@ -51,6 +51,7 @@
   "Function called each time the USER-KEYMAP-LIST is customised.
 Update the keybindings in USER-KEYMAP according to VAL.
 Then set the toplevel value of SYM to VAL."
+  (unless (boundp 'user-keymap-list) (defvar user-keymap-list nil))
   ;;Remove all keys that are no longer set in the custom variable.
   (mapc
    (lambda (pair)
