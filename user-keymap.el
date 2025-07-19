@@ -209,7 +209,7 @@ key sequence KEYSEQ if mode USER-KEYMAP-MODE is active."
       (customize-save-variable 'user-keymap-list
 			       (cons (cons keyseq funsym)
 				     (assoc-delete-all keyseq user-keymap-list)))
-      (message (format "%s bound to %S." funsym (key-description keyseq) )))))
+      (message "%s bound to %S." funsym (key-description keyseq)))))
 
 
 ;;;###autoload
@@ -230,7 +230,7 @@ active again."
     (progn
       (customize-save-variable 'user-keymap-list
 			       (rassq-delete-all funsym user-keymap-list)))
-    (message (format "All entries with %s removed." funsym))))
+    (message "All entries with %s removed." funsym)))
 
 (provide 'user-keymap)
 ;;; user-keymap.el ends here
