@@ -155,7 +155,7 @@ commands:
   "Sort USER-KEYMAP-LIST on key sequences."
   (interactive)
   (customize-save-variable 'user-keymap-list
-			   (sort user-keymap-list :key #'car)))
+			   (sort user-keymap-list :key (lambda (p) (vconcat (car p))))))
 
 (defun user-keymap-read-command ()
   "Read a command with default from the symbol at point."
