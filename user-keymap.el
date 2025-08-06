@@ -1,4 +1,4 @@
-;;; user-keymap.el --- Configure user keysequence bindings from a custom variable -*- lexical-binding:t -*-
+;;; user-keymap.el --- Configure user key sequence bindings from a custom variable -*- lexical-binding:t -*-
 ;; Author: Viandant <viandant@langenst.de>
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "29.3"))
@@ -29,7 +29,7 @@
 ;;
 ;; Some auxiliary commands are provided:
 ;; USER-KEYMAP-SORT-ON-COMMANDS: sort USER-KEYMAP-LIST on commands
-;; USER-KEYMAP-SORT-ON-KEYSEQUENCES: sort USER-KEYMAP-LIST on keysequences
+;; USER-KEYMAP-SORT-ON-KEY-SEQUENCES: sort USER-KEYMAP-LIST on key sequences
 ;; USER-KEYMAP-ADD: Interactively add an entry to USER-KEYMAP-LIST
 ;; USER-KEYMAP-DELETE: Interactively add an entry to USER-KEYMAP-LIST
 
@@ -110,7 +110,7 @@ Therefore, two auxiliary commands are provided to sort the list on
 commands resp. key sequences:
 
 - `user-keymap-sort-on-commands'
-- `user-keymap-sort-on-keysequences'
+- `user-keymap-sort-on-key-sequences'
 
 You may find it more convenient to add and delete entries using these
 commands:
@@ -151,8 +151,8 @@ commands:
 			   (sort user-keymap-list :key #'cdr)))
 
 ;;;###autoload
-(defun user-keymap-sort-on-keysequences ()
-  "Sort USER-KEYMAP-LIST on keysequences."
+(defun user-keymap-sort-on-key-sequences ()
+  "Sort USER-KEYMAP-LIST on key sequences."
   (interactive)
   (customize-save-variable 'user-keymap-list
 			   (sort user-keymap-list :key #'car)))
@@ -176,7 +176,7 @@ commands:
 	(result nil))
     (while (null result)
       (let*
-	  ((keyseq (read-key-sequence "Keysequence to bind to (C-g to quit): " nil t))
+	  ((keyseq (read-key-sequence "Key sequence to bind to (C-g to quit): " nil t))
 	   (existing-binding (key-binding keyseq)))
 	(if (eq (seq-elt keyseq (1- (seq-length keyseq))) ?\a)
 	    (setq quit-flag t)
@@ -198,7 +198,7 @@ commands:
 This will cause function symbol FUNSYM to be bound to
 key sequence KEYSEQ if mode USER-KEYMAP-MODE is active."
   ;; We want this:
-  ;; (interactive "kKeysequence: \naKeysequence to bind to: ")
+  ;; (interactive "kKey sequence: \naKey sequence to bind to: ")
   ;; but without the misleading '(C-h for help)' in the prompt when reading KEYSEQ.
   ;; Therefore it gets more complicated:
   (interactive
@@ -218,10 +218,10 @@ key sequence KEYSEQ if mode USER-KEYMAP-MODE is active."
   "Delete all pairs (_ . FUNSYM) from USER-KEYMAP-LIST and save it.
 This will cause the function symbol FUNSYM no longer to
 be bound to the key sequence previously associated to it in USER-KEYMAP-LIST.
-If the keys sequence has a binding outside USER-KEYMAP-LIST, this one may become
+If the key sequence has a binding outside USER-KEYMAP-LIST, this one may become
 active again."
   ;; We want this:
-  ;; (interactive "kKeysequence: \naKeysequence to bind to: ")
+  ;; (interactive "kKey sequence: \naKey sequence to bind to: ")
   ;; but without the misleading '(C-h for help)' in the prompt when reading KEYSEQ.
   ;; Therefore it gets more complicated:
   (interactive
