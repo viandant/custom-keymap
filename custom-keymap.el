@@ -92,13 +92,13 @@ and the customisation dialogue will look nice again."
 (define-minor-mode custom-keymap-mode
     "Minor mode with the only purpose to activate the `custom-keymap'.
 
-`custom-keymap' is a keymap that is modified by customising `custom-keymap-list'.
-So you can use `customize-variable' with `custom-keymap-list' to edit your
-key bindings.  Thus they will be presented in a conveniently readable
-and editable way.  `custom-keymap-list' is an assoc list of key sequences
-and commands (represented as there symbols).  Customisations of this
-list will immediately become active if `global-custom-keymap-mode' is
-enabled.
+`custom-keymap' is a keymap that is modified by customising
+`custom-keymap-list'.  So you can use `customize-variable' with
+`custom-keymap-list' to edit your key bindings.  Thus they will be
+presented in a conveniently readable and editable way.
+`custom-keymap-list' is an assoc list of key sequences and commands
+\(represented as there symbols).  Customisations of this list will
+immediately become active if `global-custom-keymap-mode' is enabled.
 
 So you can add this line to your `.emacs' initialisation file to
 automatically activate your bindings every time you start emacs:
@@ -212,14 +212,13 @@ key sequence KEYSEQ if mode CUSTOM-KEYMAP-MODE is active."
 				     (assoc-delete-all keyseq custom-keymap-list)))
       (message "%s bound to %S." funsym (key-description keyseq)))))
 
-
 ;;;###autoload
 (defun custom-keymap-delete (funsym)
   "Delete all pairs (_ . FUNSYM) from CUSTOM-KEYMAP-LIST and save it.
-This will cause the function symbol FUNSYM no longer to
-be bound to the key sequence previously associated to it in CUSTOM-KEYMAP-LIST.
-If the key sequence has a binding outside CUSTOM-KEYMAP-LIST, this one may become
-active again."
+This will cause the function symbol FUNSYM no longer to be bound to
+the key sequence previously associated to it in CUSTOM-KEYMAP-LIST.
+If the key sequence has a binding outside CUSTOM-KEYMAP-LIST, this one
+may become active again."
   ;; We want this:
   ;; (interactive "kKey sequence: \naKey sequence to bind to: ")
   ;; but without the misleading '(C-h for help)' in the prompt when reading KEYSEQ.
